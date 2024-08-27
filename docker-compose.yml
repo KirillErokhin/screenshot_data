@@ -1,0 +1,14 @@
+services:
+  get_data:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 1255:1255
+    container_name: get_data
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=2
+    restart: always
+    volumes:
+      - ./saiga/HF_model:/app/saiga/HF_model
